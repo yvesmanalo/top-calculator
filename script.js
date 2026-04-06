@@ -1,5 +1,5 @@
 const addBtn = document.querySelector("#add-btn");
-const minusBtn = document.querySelector("#minus-btn");
+const subtractBtn = document.querySelector("#subtract-btn");
 const multiplyBtn = document.querySelector("#multiply-btn");
 const divideBtn = document.querySelector("#divide-btn");
 const equalBtn = document.querySelector("#equal-btn");
@@ -8,74 +8,58 @@ const display = document.querySelector("#display");
 const num1btn = document.querySelector("#one");
 const num2btn = document.querySelector("#two");
 
-const equationObj = {
-  num1: null,
-  num2: null,
-  operation: null,
-};
+let previousNumber = Number(null);
+let currentNumber = Number(null);
+let currentOperator = null;
+let shouldOverwriteCurrentDisplay = true;
+let previousInputValue = null;
 
 num1btn.addEventListener("click", () => {
-  if (
-    display.textContent === "+" ||
-    display.textContent === "-" ||
-    display.textContent === "*" ||
-    display.textContent === "/"
-  ) {
-    clearDisplay();
+  previousInputValue = 1;
+  if (shouldOverwriteCurrentDisplay) {
+    display.textContent = "1";
+    shouldOverwriteCurrentDisplay = false;
+  } else {
+    display.textContent += "1";
   }
-  display.textContent += "1";
 });
+
 num2btn.addEventListener("click", () => {
-  if (
-    display.textContent === "+" ||
-    display.textContent === "-" ||
-    display.textContent === "*" ||
-    display.textContent === "/"
-  ) {
-    clearDisplay();
+  previousInputValue = 2;
+  if (shouldOverwriteCurrentDisplay) {
+    display.textContent = "2";
+    shouldOverwriteCurrentDisplay = false;
+  } else {
+    display.textContent += "2";
   }
-  display.textContent += "2";
 });
 
 addBtn.addEventListener("click", () => {
-  !equationObj.num1
-    ? (equationObj.num1 = display.textContent)
-    : (equationObj.num2 = display.textContent);
-  clearDisplay();
-  display.textContent += "+";
-  equationObj.operation = display.textContent;
+  shouldOverwriteCurrentDisplay = true;
+  if (previousInputValue === "+") {
+    return;
+  }
+  currentNumber = Number(display.textContent);
+  previousNumber += currentNumber;
+  display.textContent = `${previousNumber}`;
+  currentOperator = "+";
+  previousInputValue = currentOperator;
 });
 
-equalBtn.addEventListener("click", () => {
-  equationObj.num2 = display.textContent;
-  clearDisplay();
-  display.textContent = operate(
-    parseInt(equationObj.num1),
-    equationObj.operation,
-    parseInt(equationObj.num2),
-  );
+subtractBtn.addEventListener("click", () => {
+  shouldOverwriteCurrentDisplay = true;
+  if (previousInputValue === "-") {
+    return;
+  }
+  if (previousNumber === 0) {
+    currentNumber = Number(display.textContent);
+    previousNumber = currentNumber;
+    display.textContent = `${currentNumber}`;
+  } else {
+    currentNumber = Number(display.textContent);
+    previousNumber -= currentNumber;
+    display.textContent = `${previousNumber}`;
+  }
+  currentOperator = "-";
+  previousInputValue = currentOperator;
 });
-
-const addNumber = (num1, num2) => num1 + num2;
-const subtractNumber = (num1, num2) => num1 - num2;
-const multiplyNumber = (num1, num2) => num1 * num2;
-const divideNumber = (num1, num2) => num1 / num2;
-
-const operate = (num1, operation, num2) => {
-  if (operation === "+") {
-    return addNumber(num1, num2);
-  }
-  if (operation === "-") {
-    return subtractNumber(num1, num2);
-  }
-  if (operation === "*") {
-    return multiplyNumber(num1, num2);
-  }
-  if (operation === "*") {
-    return divideNumber(num1, num2);
-  }
-};
-
-const clearDisplay = () => {
-  display.textContent = "";
-};
