@@ -15,11 +15,13 @@ const num7btn = document.querySelector("#seven");
 const num8btn = document.querySelector("#eight");
 const num9btn = document.querySelector("#nine");
 const num0btn = document.querySelector("#zero");
+const decimalPointBtn = document.querySelector("#decimal-point");
 
 let prevNumber = Number(null);
 let currNumber = Number(null);
 let currOperator = String(null);
 let shouldOverwriteCurrentDisplay = true;
+let isOperatorButtonPressed = false;
 
 function add(num1, num2) {
   return num1 + num2;
@@ -57,96 +59,219 @@ function operate(num1, num2, operator) {
 }
 
 num1btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "1";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "1";
   }
+
+  equalBtn.removeAttribute("disabled");
 });
 
 num2btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "2";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "2";
   }
+
+  equalBtn.removeAttribute("disabled");
 });
 
 num3btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "3";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "3";
   }
+
+  equalBtn.removeAttribute("disabled");
 });
 
 num4btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "4";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "4";
   }
+
+  equalBtn.removeAttribute("disabled");
 });
 
 num5btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "5";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "5";
   }
+
+  equalBtn.removeAttribute("disabled");
 });
 
 num6btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "6";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "6";
   }
+
+  equalBtn.removeAttribute("disabled");
 });
 
 num7btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "7";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "7";
   }
+
+  equalBtn.removeAttribute("disabled");
 });
 
 num8btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "8";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "8";
   }
+
+  equalBtn.removeAttribute("disabled");
 });
 
 num9btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "9";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "9";
   }
+
+  equalBtn.removeAttribute("disabled");
 });
 
 num0btn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
   if (shouldOverwriteCurrentDisplay) {
     display.textContent = "0";
     shouldOverwriteCurrentDisplay = false;
   } else {
     display.textContent += "0";
   }
+
+  equalBtn.removeAttribute("disabled");
+});
+
+decimalPointBtn.addEventListener("click", () => {
+  if (!isOperatorButtonPressed) {
+    isOperatorButtonPressed = false;
+    addBtn.removeAttribute("disabled");
+    subtractBtn.removeAttribute("disabled");
+    multiplyBtn.removeAttribute("disabled");
+    divideBtn.removeAttribute("disabled");
+  }
+
+  if (shouldOverwriteCurrentDisplay) {
+    display.textContent = ".";
+    shouldOverwriteCurrentDisplay = false;
+  } else {
+    display.textContent += ".";
+  }
+
+  decimalPointBtn.setAttribute("disabled", true);
+  isDecimalPointBtnPressed = true;
+
+  equalBtn.removeAttribute("disabled");
 });
 
 addBtn.addEventListener("click", () => {
+  decimalPointBtn.removeAttribute("disabled");
   shouldOverwriteCurrentDisplay = true;
 
   if (!prevNumber) {
@@ -158,9 +283,14 @@ addBtn.addEventListener("click", () => {
   }
 
   currOperator = "+";
+  addBtn.setAttribute("disabled", true);
+  subtractBtn.setAttribute("disabled", true);
+  multiplyBtn.setAttribute("disabled", true);
+  divideBtn.setAttribute("disabled", true);
 });
 
 subtractBtn.addEventListener("click", () => {
+  decimalPointBtn.removeAttribute("disabled");
   shouldOverwriteCurrentDisplay = true;
 
   if (!prevNumber) {
@@ -172,9 +302,14 @@ subtractBtn.addEventListener("click", () => {
   }
 
   currOperator = "-";
+  addBtn.setAttribute("disabled", true);
+  subtractBtn.setAttribute("disabled", true);
+  multiplyBtn.setAttribute("disabled", true);
+  divideBtn.setAttribute("disabled", true);
 });
 
 multiplyBtn.addEventListener("click", () => {
+  decimalPointBtn.removeAttribute("disabled");
   shouldOverwriteCurrentDisplay = true;
 
   if (!prevNumber) {
@@ -186,10 +321,15 @@ multiplyBtn.addEventListener("click", () => {
   }
 
   currOperator = "*";
+  addBtn.setAttribute("disabled", true);
+  subtractBtn.setAttribute("disabled", true);
+  multiplyBtn.setAttribute("disabled", true);
+  divideBtn.setAttribute("disabled", true);
 });
 
 divideBtn.addEventListener("click", () => {
   shouldOverwriteCurrentDisplay = true;
+  decimalPointBtn.removeAttribute("disabled");
 
   if (!prevNumber) {
     prevNumber = Number(display.textContent);
@@ -201,13 +341,27 @@ divideBtn.addEventListener("click", () => {
   }
 
   currOperator = "/";
+  addBtn.setAttribute("disabled", true);
+  subtractBtn.setAttribute("disabled", true);
+  multiplyBtn.setAttribute("disabled", true);
+  divideBtn.setAttribute("disabled", true);
 });
 
 equalBtn.addEventListener("click", () => {
   shouldOverwriteCurrentDisplay = true;
   currNumber = Number(display.textContent);
-  prevNumber = operate(prevNumber, currNumber, currOperator);
-  display.textContent = `${prevNumber}`;
+  if (operate(prevNumber, currNumber, currOperator) === undefined) {
+    display.textContent = currNumber;
+    prevNumber = currNumber;
+  } else {
+    prevNumber = operate(prevNumber, currNumber, currOperator);
+    display.textContent = prevNumber.toFixed(2);
+  }
+  equalBtn.setAttribute("disabled", true);
+  prevNumber = Number(null);
+  currNumber = Number(null);
+  currOperator = String(null);
+  shouldOverwriteCurrentDisplay = true;
 });
 
 clearBtn.addEventListener("click", () => {
@@ -216,4 +370,9 @@ clearBtn.addEventListener("click", () => {
   currOperator = String(null);
   shouldOverwriteCurrentDisplay = true;
   display.textContent = "";
+  equalBtn.removeAttribute("disabled");
+  addBtn.removeAttribute("disabled");
+  subtractBtn.removeAttribute("disabled");
+  multiplyBtn.removeAttribute("disabled");
+  divideBtn.removeAttribute("disabled");
 });
