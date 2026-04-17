@@ -358,6 +358,7 @@ equalBtn.addEventListener("click", () => {
     display.textContent = prevNumber.toFixed(2);
   }
   equalBtn.setAttribute("disabled", true);
+  decimalPointBtn.removeAttribute("disabled");
   prevNumber = Number(null);
   currNumber = Number(null);
   currOperator = String(null);
@@ -375,4 +376,5 @@ clearBtn.addEventListener("click", () => {
   subtractBtn.removeAttribute("disabled");
   multiplyBtn.removeAttribute("disabled");
   divideBtn.removeAttribute("disabled");
+  decimalPointBtn.removeAttribute("disabled");
 });

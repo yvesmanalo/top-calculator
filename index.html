@@ -4,27 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TOP's Calculator</title>
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="display"></div>
-    <button id="one">1</button>
-    <button id="two">2</button>
-    <button id="three">3</button>
-    <button id="four">4</button>
-    <button id="five">5</button>
-    <button id="six">6</button>
-    <button id="seven">7</button>
-    <button id="eight">8</button>
-    <button id="nine">9</button>
-    <button id="zero">0</button>
-    <button id="decimal-point">.</button>
-    <button id="clear-btn">C</button>
-    <button id="add-btn">+</button>
-    <button id="subtract-btn">-</button>
-    <button id="multiply-btn">*</button>
-    <button id="divide-btn">/</button>
-    <button id="equal-btn">=</button>
+    <div id="container">
+      <div id="display"></div>
+      <div id="buttons-container">
+        <button id="seven" class="num-buttons">7</button>
+        <button id="eight" class="num-buttons">8</button>
+        <button id="nine" class="num-buttons">9</button>
+        <button id="add-btn" class="operation-buttons">+</button>
+        <button id="four" class="num-buttons">4</button>
+        <button id="five" class="num-buttons">5</button>
+        <button id="six" class="num-buttons">6</button>
+        <button id="subtract-btn" class="operation-buttons">-</button>
+        <button id="one" class="num-buttons">1</button>
+        <button id="two" class="num-buttons">2</button>
+        <button id="three" class="num-buttons">3</button>
+        <button id="multiply-btn" class="operation-buttons">*</button>
+        <button id="zero" class="num-buttons">0</button>
+        <button id="decimal-point" class="num-buttons">.</button>
+        <button id="clear-btn">C</button>
+        <button id="divide-btn" class="operation-buttons">/</button>
+        <button id="equal-btn">=</button>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
