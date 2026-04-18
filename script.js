@@ -350,7 +350,15 @@ divideBtn.addEventListener("click", () => {
 equalBtn.addEventListener("click", () => {
   shouldOverwriteCurrentDisplay = true;
   currNumber = Number(display.textContent);
-  if (operate(prevNumber, currNumber, currOperator) === undefined) {
+  if (
+    operate(prevNumber, currNumber, currOperator) === "Cannot divide by zero"
+  ) {
+    display.textContent = operate(prevNumber, currNumber, currOperator);
+    addBtn.setAttribute("disabled", true);
+    subtractBtn.setAttribute("disabled", true);
+    multiplyBtn.setAttribute("disabled", true);
+    divideBtn.setAttribute("disabled", true);
+  } else if (operate(prevNumber, currNumber, currOperator) === undefined) {
     display.textContent = currNumber;
     prevNumber = currNumber;
   } else {
